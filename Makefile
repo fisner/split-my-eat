@@ -1,9 +1,9 @@
 install:
-	npm ci
+	npm i
 	npm link
 
 uninstall:
-	npm uninstall -g @hexlet/code
+	npm uninstall -g split-my-eat
 
 publish:
 	npm publish --dry-run
@@ -13,3 +13,6 @@ lint:
 
 test:
 	npx jest
+
+run:
+	node bin/split-my-eat.js male 33 178 82
