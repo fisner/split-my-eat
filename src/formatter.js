@@ -34,8 +34,7 @@ const createTable = (data, foodData) => {
   const missingBorder = 2;
   const tableBreakline = `${tableBorder}${'-'.repeat(cellLength * columnCount + missingBorder)}${tableBorder}`;
 
-  const unionList = [proteinList, fatList, carbsList];
-  const tableRowsCount = Math.max(...unionList.map((item) => item.length));
+  const tableRowsCount = Math.max(...[proteinList, fatList, carbsList].map((item) => item.length));
   const tableRows = [];
   for (let i = 0; i < tableRowsCount; i += 1) {
     const rowData = [proteinList[i], fatList[i], carbsList[i]];
