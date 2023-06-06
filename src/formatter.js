@@ -30,7 +30,9 @@ const createTable = (data, foodData) => {
     .map((item) => item.length)) + indent;
 
   const tableHeaders = createTableRow(['Белки', 'Жиры', 'Углеводы'], cellLength, tableBorder);
-  const tableBreakline = `${tableBorder}${'-'.repeat(cellLength * 3 + 2)}${tableBorder}`;
+  const columnCount = 3;
+  const missingBorder = 2;
+  const tableBreakline = `${tableBorder}${'-'.repeat(cellLength * columnCount + missingBorder)}${tableBorder}`;
 
   const unionList = [proteinList, fatList, carbsList];
   const tableRowsCount = Math.max(...unionList.map((item) => item.length));
