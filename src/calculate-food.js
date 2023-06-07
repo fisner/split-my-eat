@@ -14,7 +14,9 @@ const getFoodCount = (type, count, foodList) => {
 };
 
 const calculateFood = (obj) => {
-  const { calories, protein, fat, carbs, macroRatio } = obj;
+  const {
+    calories, protein, fat, carbs, macroRatio,
+  } = obj;
   const proteinFood = getFoodCount('protein', protein, foodData.protein);
   const fatFood = getFoodCount('fat', fat, foodData.fat);
   const carbsFood = getFoodCount('carbs', carbs, foodData.carbs);
