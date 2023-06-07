@@ -1,4 +1,4 @@
-const calculateCalories = (weight, height, age, gender) => {
+const calculateCalories = (gender, age, height, weight) => {
   const isMale = gender.toLowerCase() === 'male';
   const bmr = isMale
     ? 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)
