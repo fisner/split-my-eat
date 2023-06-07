@@ -1,4 +1,4 @@
-import getFoodData from './utilities/read-data.js';
+import getFoodData from './utilities/getFoodData.js';
 
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
