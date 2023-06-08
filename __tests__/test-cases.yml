@@ -1,0 +1,145 @@
+---
+- summary: |
+    Таблица (1)
+  requirement: |
+    Вывод в виде форматированной таблицы 0.0
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    - Ввод данных принят и выведена таблица
+
+
+- summary: |
+    Прием данных(2)
+  requirement: |
+    Принимает данные на вход "sex, age, height, weight". 0.1
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    - Ввод данных принят и выведена таблица со значениями исходя из входных данных
+
+
+- summary: |
+    Вывод количества продуктов в граммах(3)
+  requirement: |
+    Выводит количестко нужных продуктов в граммах по формуле расчета БЖУ. 0.2
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    - Выведена таблица с указанием продуктов в граммах
+
+
+- summary: |
+    Вывод названия продуктов(4)
+  requirement: |
+    Выводит название продуктов. 0.3
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    - Выведена таблица с указанием названия продуктов
+
+
+- summary: |
+    Вывод каллорий/БЖУ/соотношение(5)
+  requirement: |
+    Вывод каллорий/БЖУ/соотношение 0.4
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    - Выведена информация по количеству нужных каллорий/БЖУ/соотношения исходя из входных параметров
+
+
+- summary: |
+    Разный вывод для мужчины и женщины при равных характеристиках(6)
+  requirement: |
+    Выводит разные расчеты для мужчины и женщины при равных параметрах. 0.5
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: 
+    - Команда node bin/splitMyEat.js male 33 178 82
+    - Команда node bin/splitMyEat.js female 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+    - Вводим команду node bin/splitMyEat.js female 33 178 82
+  expected-result: |
+    Выведена разная таблица и информация по количеству нужных каллорий/БЖУ/соотношения
+
+
+- summary: |
+    Вывод без плавающей запятой(7)
+  requirement: |
+    Выводит граммовку без плавающей запятой. 1.0
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    Вывод в таблице и информация по количеству нужных каллорий/БЖУ/соотношения указана без плавающей запятой
+
+
+- summary: |
+    Вывод на русском языке(8)
+  requirement: |
+    Выводит выходные данные на русском языке 1.1
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    Вывод в таблице и информация по количеству нужных каллорий/БЖУ/соотношения указана на русском языке
+
+
+- summary: |
+    Нет выхода за пределы таблицы(9)
+  requirement: |
+    Названия и значения не выходят за рамки таблицы 2.0
+  prerequisites: |
+    Открыть консоль Ubuntu
+  test-data: |
+    Команда node bin/splitMyEat.js male 33 178 82
+  steps:
+    - Открываем консоль Ubuntu
+    - По команде (cd spleat-my-eat) заходим в репозиторий утилиты
+    - Вводим команду node bin/splitMyEat.js male 33 178 82
+  expected-result: |
+    Данные не выходят за пределы таблицы

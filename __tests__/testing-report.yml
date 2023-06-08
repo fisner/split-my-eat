@@ -1,0 +1,36 @@
+---
+- summary: |
+    Таблица (1)
+  status: pass
+
+- summary: |
+    Прием данных(2)
+  status: pass
+
+- summary: |
+   Вывод количества продуктов в граммах(3)
+  status: pass
+
+- summary: |
+    Вывод названия продуктов(4)
+  status: pass
+
+- summary: |
+    Вывод каллорий/БЖУ/соотношение(5)
+  status: pass
+
+- summary: |
+    Разный вывод для мужчины и женщины при равных характеристиках(6)
+  status: pass
+
+- summary: |
+    Вывод без плавающей запятой(7)
+  status: pass
+
+- summary: |
+    Вывод на русском языке(8)
+  status: pass
+
+- summary: |
+    Нет выхода за пределы таблицы(9)
+  status: pass
