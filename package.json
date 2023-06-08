@@ -1,7 +1,7 @@
 {
   "name": "split-my-eat",
   "version": "1.0.0",
-  "description": "Group 51 project",
+  "description": "51 group project",
   "type": "module",
   "main": "index.js",
   "scripts": {
