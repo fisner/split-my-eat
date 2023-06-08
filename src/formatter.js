@@ -48,6 +48,7 @@ const createTable = (data, foodData) => {
 const formattSex = (sex) => {
   const male = ['male', 'm', 'м', 'муж', 'мужской', 'мужчина', 'mr', 'boy', 'man'];
   const female = ['female', 'f', 'ж', 'жен', 'женский', 'женщина', 'ms', 'mrs', 'miss', 'girl', 'woman'];
+
   if (male.includes(sex)) {
     return 'мужской';
   }
