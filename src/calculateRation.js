@@ -12,19 +12,12 @@ const getFoodCount = (type, count, foodList) => {
   return result;
 };
 
-const calculateRation = (data) => {
-  const {
-    calories, protein, fat, carbs, macroRatio,
-  } = data;
+const calculateRation = (calories) => {
+  const { protein, fat, carbs } = calories;
   const proteinFood = getFoodCount('protein', protein, foodData.protein);
   const fatFood = getFoodCount('fat', fat, foodData.fat);
   const carbsFood = getFoodCount('carbs', carbs, foodData.carbs);
   const result = {
-    calories,
-    protein,
-    fat,
-    carbs,
-    macroRatio,
     proteinFood,
     fatFood,
     carbsFood,
