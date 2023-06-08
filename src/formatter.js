@@ -45,22 +45,22 @@ const createTable = (data, foodData) => {
   return `${tableHeaders}\n${tableBreakline}\n${tableRows.join('\n')}`;
 };
 
-const formattSex = (sex) => {
+const formattGender = (gender) => {
   const male = ['male', 'm', 'м', 'муж', 'мужской', 'мужчина', 'mr', 'boy', 'man'];
   const female = ['female', 'f', 'ж', 'жен', 'женский', 'женщина', 'ms', 'mrs', 'miss', 'girl', 'woman'];
 
-  if (male.includes(sex)) {
+  if (male.includes(gender)) {
     return 'мужской';
   }
-  if (female.includes(sex)) {
+  if (female.includes(gender)) {
     return 'женский';
   }
   return '(-_-)';
 };
 
-const formatter = (sex, age, height, weight, caloriesData, rationData) => {
+const formatter = (gender, age, height, weight, caloriesData, rationData) => {
   const foodData = getFoodData();
-  const userData = `Пол: ${formattSex(sex)}, возраст: ${age}, рост: ${height}, вес: ${weight}`;
+  const userData = `Пол: ${formattGender(gender)}, возраст: ${age}, рост: ${height}, вес: ${weight}`;
   const calories = `Калории: ${caloriesData.calories}`;
   const macro = `Белки: ${caloriesData.protein}, жиры: ${caloriesData.fat}, углеводы: ${caloriesData.carbs}`;
   const macroRatio = `Соотношение белки/жиры/углеводы: ${caloriesData.macroRatio}`;

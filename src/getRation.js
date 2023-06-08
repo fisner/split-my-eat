@@ -2,10 +2,10 @@ import calculateCalories from './calculateCalories.js';
 import calculateRation from './calculateRation.js';
 import formatter from './formatter.js';
 
-const getRation = (sex, age, height, weight) => {
-  const caloriesData = calculateCalories(sex, age, height, weight);
+const getRation = (gender, age, height, weight) => {
+  const caloriesData = calculateCalories(gender, age, height, weight);
   const rationData = calculateRation(caloriesData);
-  const formattedData = formatter(sex, age, height, weight, caloriesData, rationData);
+  const formattedData = formatter(gender, age, height, weight, caloriesData, rationData);
   return formattedData;
 };
 
