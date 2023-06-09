@@ -2,8 +2,8 @@
 
 [![Node CI](https://github.com/deus-ex-m/split-my-eat/actions/workflows/nodejs.yml/badge.svg)](https://github.com/deus-ex-m/split-my-eat/actions/workflows/nodejs.yml)
 
-Программа помогает людям составить рацион питания на неделю.
-Пользователь вводит свои характеристики(пол, возраст, рост, вес) и программа высчитывает количество калорий и БЖУ для пользователя, на основе этих данных выводится рацион питания на неделю в виде названия продуктов и количество грамм для суточного потребления.
+The application helps people plan their diet for the week.
+The user enters his characteristics (gender, age, height, weight) and the program calculates the number of calories and macro ratio for the user, based on these data, the diet for the week is displayed in the form of product names and the number of grams for daily consumption.
 
 ## Requirements
 
