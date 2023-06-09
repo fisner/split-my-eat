@@ -2,7 +2,8 @@ const checkGender = (gender) => {
   const MALE_VARIANTS = ['male', 'm', 'man', 'boy'];
   return MALE_VARIANTS.includes(gender.toLowerCase());
 };
-function calculateMacroRatio(weight, protein, fat, carbs) {
+
+function calculateMacroRatio(protein, fat, carbs) {
   const proteinCalories = protein * 4;
   const fatCalories = fat * 9;
   const carbsCalories = carbs * 4;
@@ -39,8 +40,8 @@ const calculateCalories = (gender, age, height, weight) => {
   const fat = Math.round((calories * FAT_MULTIPLIER) / 9);
   const carbs = Math.round((calories - (protein * 4) - (fat * 9)) / 4);
 
-  const macroRatio = calculateMacroRatio(weight, protein, fat, carbs);
-  const totalMacroRatio = calculateMacroRatio(weight, protein, fat, carbs + protein * 4 + fat * 9);
+  const macroRatio = calculateMacroRatio(protein, fat, carbs);
+  const totalMacroRatio = calculateMacroRatio(protein, fat, carbs + protein * 4 + fat * 9);
 
   return {
     calories,
