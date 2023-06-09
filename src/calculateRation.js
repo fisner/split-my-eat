@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
 import getFoodData from './utilities/getFoodData.js';
 
 const getFoodCount = (type, count, foodList) => {

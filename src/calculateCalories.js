@@ -2,6 +2,7 @@ const checkGender = (gender) => {
   const MALE_VARIANTS = ['male', 'm', 'man', 'boy'];
   return MALE_VARIANTS.includes(gender.toLowerCase());
 };
+
 function calculateMacroRatio(weight, protein, fat, carbs) {
   const proteinCalories = protein * 4;
   const fatCalories = fat * 9;
