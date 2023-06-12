@@ -17,7 +17,10 @@
     "jest": "^29.5.0"
   },
   "dependencies": {
-    "commander": "^10.0.1"
+    "chalk": "^5.2.0",
+    "commander": "^10.0.1",
+    "figlet": "^1.6.0",
+    "inquirer": "^9.2.7"
   },
   "bin": {
     "split-my-eat": "bin/splitMyEat.js"

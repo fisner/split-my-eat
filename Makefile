@@ -15,4 +15,4 @@ test:
 	npx jest
 
 run:
-	node bin/splitMyEat.js male 33 178 82
+	node bin/splitMyEat.js
