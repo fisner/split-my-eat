@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import inquirer from 'inquirer';
+import enquirer from 'enquirer';
 import chalk from 'chalk';
 import figlet from 'figlet';
 import getRation from '../index.js';
@@ -12,66 +12,76 @@ const getLogo = (text) => chalk.green(
   }),
 );
 
-const getUserInfo = () => {
-  const questions = [
-    {
-      name: 'gender',
-      type: 'list',
-      message: 'What is your gender?',
-      choices: ['male', 'female'],
-    },
-    {
-      name: 'age',
-      type: 'number',
-      message: 'What is your age?',
-    },
-    {
-      name: 'height',
-      type: 'number',
-      message: 'What is your height?',
-    },
-    {
-      name: 'weight',
-      type: 'number',
-      message: 'What is your weight?',
-    },
-  ];
+const getUserGender = () => enquirer.prompt({
+  name: 'gender',
+  type: 'select',
+  message: 'What is your gender?',
+  choices: ['male', 'female'],
+});
 
-  return inquirer.prompt(questions);
-};
+const getUserAge = () => enquirer.prompt({
+  name: 'age',
+  type: 'input',
+  message: 'What is your age?',
+  initial: 25,
+});
 
-const outputQuestion = () => {
-  const questions = [
-    {
-      name: 'answer',
-      type: 'list',
-      message: 'What information do you want?',
-      choices: ['calories', 'meal plan', 'calories and meal plan', 'exit'],
-      loop: false,
-    },
-  ];
+const getUserHeight = (gender) => enquirer.prompt({
+  name: 'height',
+  type: 'input',
+  message: 'What is your height?',
+  initial: gender === 'male' ? 175 : 165,
+});
 
-  return inquirer.prompt(questions);
-};
+const getUserWeight = (height) => enquirer.prompt({
+  name: 'weight',
+  type: 'input',
+  message: 'What is your weight?',
+  initial: height - 100,
+});
 
-const showMessage = (message) => {
+const getUserPhysicalActivity = () => enquirer.prompt({
+  name: 'physicalActivity',
+  type: 'select',
+  message: 'What is your physical activity level?',
+  choices: [
+    { message: 'no activity' },
+    { message: '1-3 light activities per week' },
+    { message: '3-5 moderate activities per week' },
+    { message: '5-6 moderate activities per week' },
+    { message: '7 vigorous activity per week' },
+  ],
+  value: 'no activity',
+});
+
+const outputQuestion = () => enquirer.prompt({
+  name: 'answer',
+  type: 'select',
+  message: 'What information do you want?',
+  choices: ['calories', 'meal plan', 'calories and meal plan', 'exit'],
+});
+
+const showUserInfo = (userInfo) => console.log(`${chalk.white.bgGreen.bold(userInfo)}\n`);
+
+const showMessage = (userInfo, message) => {
+  showUserInfo(userInfo);
   console.log(chalk.green.bold(message));
 };
 
-const output = async (userData) => {
+const output = async (userInfo, userData) => {
   const { answer } = await outputQuestion();
   switch (answer) {
     case 'calories':
-      showMessage(userData.formattedCalories);
-      output(userData);
+      showMessage(userInfo, userData.formattedCalories);
+      output(userInfo, userData);
       break;
     case 'meal plan':
-      showMessage(userData.formattedRation);
-      output(userData);
+      showMessage(userInfo, userData.formattedRation);
+      output(userInfo, userData);
       break;
     case 'calories and meal plan':
-      showMessage(`${userData.formattedCalories}\n\n${userData.formattedRation}`);
-      output(userData);
+      showMessage(userInfo, `${userData.formattedCalories}\n\n${userData.formattedRation}`);
+      output(userInfo, userData);
       break;
     case 'exit':
     default:
@@ -83,15 +93,15 @@ const run = async () => {
   const logo = getLogo('Split my eat');
   console.log(`${logo}\n`);
 
-  const userInfo = await getUserInfo();
-  const {
-    gender,
-    age,
-    height,
-    weight,
-  } = userInfo;
-  const userData = getRation(gender, age, height, weight);
-  output(userData);
+  const { gender } = await getUserGender();
+  const { age } = await getUserAge();
+  const { height } = await getUserHeight(gender);
+  const { weight } = await getUserWeight(height);
+  const { physicalActivity } = await getUserPhysicalActivity();
+
+  const userInfo = `Gender: ${gender}, age: ${age}, height: ${height}, weight: ${weight}\nPhysical activity: ${physicalActivity}`;
+  const userData = getRation(gender, age, height, weight, physicalActivity);
+  output(userInfo, userData);
 };
 
 run();
