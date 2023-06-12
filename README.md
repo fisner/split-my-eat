@@ -14,9 +14,8 @@ The user enters his characteristics (gender, age, height, weight) and the progra
 
 * `make install` install
 * `make uninstall` uninstall
-* `split-my-eat -h` information about application
-* `split-my-eat <gender> <age> <height> <weight>` launch
+* `split-my-eat` launch
 
 ## Work example
 
-[![asciicast](https://asciinema.org/a/590469.svg)](https://asciinema.org/a/590469)
+[![asciicast](https://asciinema.org/a/591013.svg)](https://asciinema.org/a/591013)
