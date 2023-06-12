@@ -8,5 +8,5 @@ const expectedDataPath = path.resolve('./__fixtures__/caloriesFormatterResult.tx
 const expectedData = fs.readFileSync(expectedDataPath, 'utf8');
 
 test('output format', () => {
-  expect(caloriesFormatter('male', 33, 178, 82, testCaloriesData)).toEqual(expectedData);
+  expect(caloriesFormatter(testCaloriesData)).toEqual(expectedData);
 });
