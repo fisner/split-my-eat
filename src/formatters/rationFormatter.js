@@ -1,4 +1,5 @@
-import getFoodData from '../utilities/getFoodData.js';
+import Table from 'cli-table';
+import chalk from 'chalk';
 
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
@@ -8,49 +9,28 @@ const getFoodList = (food) => Object.keys(food).reduce((acc, item) => {
   return [...acc, `${foodName}: ${foodWeight}g`];
 }, []);
 
-const createTableRow = (data, cellLength, tableBorder) => data.reduce((acc, item) => {
-  if (item === undefined) {
-    const cell = `${' '.repeat(cellLength)}${tableBorder}`;
-    return `${acc}${cell}`;
-  }
-  const cellIndent = ' '.repeat(cellLength - item.length);
-  const cell = `${item}${cellIndent}${tableBorder}`;
-  return `${acc}${cell}`;
-}, tableBorder);
+const rationFormatter = (rationData, foodData) => {
+  const table = new Table();
 
-const createTable = (data, foodData) => {
-  const indent = 2;
-  const tableBorder = '|';
+  const tableHeaders = ['Day', 'Protein food', 'Fat food', 'Carbs food']
+    .map((text) => `${chalk.blue(text)}`);
+  table.push(tableHeaders);
 
-  const proteinList = getFoodList(data.proteinFood, 'protein', foodData);
-  const fatList = getFoodList(data.fatFood, 'fat', foodData);
-  const carbsList = getFoodList(data.carbsFood, 'carbs', foodData);
+  const proteinList = getFoodList(rationData.proteinFood, 'protein', foodData);
+  const fatList = getFoodList(rationData.fatFood, 'fat', foodData);
+  const carbsList = getFoodList(rationData.carbsFood, 'carbs', foodData);
 
-  const cellLength = Math.max(...[...proteinList, ...fatList, ...carbsList]
-    .map((item) => item.length)) + indent;
-
-  const tableHeaders = createTableRow(['Protein', 'Fat', 'Carbs'], cellLength, tableBorder);
-  const columnCount = 3;
-  const missingBorder = 2;
-  const tableBreakline = `${tableBorder}${'-'.repeat(cellLength * columnCount + missingBorder)}${tableBorder}`;
-
-  const tableRowsCount = Math.max(...[proteinList, fatList, carbsList].map((item) => item.length));
-  const tableRows = [];
-  for (let i = 0; i < tableRowsCount; i += 1) {
-    const rowData = [proteinList[i], fatList[i], carbsList[i]];
-    const newRow = createTableRow(rowData, cellLength, tableBorder);
-    tableRows.push(newRow);
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const indent = '  ';
+  for (let i = 0; i < days.length; i += 1) {
+    const day = `${days[i]}${indent}`;
+    const proteinFood = `${proteinList[0]}${indent}`;
+    const fatFood = `${fatList[0]}${indent}`;
+    const carbsFood = `${carbsList[0]}${indent}`;
+    table.push([day, proteinFood, fatFood, carbsFood]);
   }
 
-  return `${tableHeaders}\n${tableBreakline}\n${tableRows.join('\n')}`;
-};
-
-const rationFormatter = (rationData) => {
-  const foodData = getFoodData();
-  const tableLabel = 'One week balanced meal plan:';
-  const table = createTable(rationData, foodData);
-
-  return `${tableLabel}\n${table}`;
+  return table;
 };
 
 export default rationFormatter;
