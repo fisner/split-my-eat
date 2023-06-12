@@ -1,0 +1,5 @@
+One week balanced meal plan:
+|Protein              |Fat                  |Carbs                |
+|-----------------------------------------------------------------|
+|Chiken: 500g         |Peanut: 200g         |Pasta: 400g          |
+|Beef: 600g           |SunflowerSeed: 200g  |Rice: 400g           |

@@ -1,0 +1,5 @@
+Gender: male, age: 33, height: 178, weight: 82
+
+Calories: 2100
+Protein: 85, fat: 20, carbs: 150
+Macronutrient Ratio: 40% / 20% / 40%
