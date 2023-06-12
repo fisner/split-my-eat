@@ -1,11 +1,11 @@
-import getFoodData from './utilities/getFoodData.js';
+import getFoodData from '../utilities/getFoodData.js';
 
 const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
 
-const getFoodList = (food, foodType, foodData) => Object.keys(food).reduce((acc, item) => {
-  const foodName = capitalize(foodData[foodType][item].name);
+const getFoodList = (food) => Object.keys(food).reduce((acc, item) => {
+  const foodName = capitalize(item);
   const foodWeight = food[item];
-  return [...acc, `${foodName}: ${foodWeight}г`];
+  return [...acc, `${foodName}: ${foodWeight}g`];
 }, []);
 
 const createTableRow = (data, cellLength, tableBorder) => data.reduce((acc, item) => {
@@ -29,7 +29,7 @@ const createTable = (data, foodData) => {
   const cellLength = Math.max(...[...proteinList, ...fatList, ...carbsList]
     .map((item) => item.length)) + indent;
 
-  const tableHeaders = createTableRow(['Белки', 'Жиры', 'Углеводы'], cellLength, tableBorder);
+  const tableHeaders = createTableRow(['Protein', 'Fat', 'Carbs'], cellLength, tableBorder);
   const columnCount = 3;
   const missingBorder = 2;
   const tableBreakline = `${tableBorder}${'-'.repeat(cellLength * columnCount + missingBorder)}${tableBorder}`;
@@ -45,29 +45,12 @@ const createTable = (data, foodData) => {
   return `${tableHeaders}\n${tableBreakline}\n${tableRows.join('\n')}`;
 };
 
-const formattGender = (gender) => {
-  const male = ['male', 'm', 'м', 'муж', 'мужской', 'мужчина', 'mr', 'boy', 'man'];
-  const female = ['female', 'f', 'ж', 'жен', 'женский', 'женщина', 'ms', 'mrs', 'miss', 'girl', 'woman'];
-
-  if (male.includes(gender)) {
-    return 'мужской';
-  }
-  if (female.includes(gender)) {
-    return 'женский';
-  }
-  return '(-_-)';
-};
-
-const formatter = (gender, age, height, weight, caloriesData, rationData) => {
+const rationFormatter = (rationData) => {
   const foodData = getFoodData();
-  const userData = `Пол: ${formattGender(gender)}, возраст: ${age}, рост: ${height}, вес: ${weight}`;
-  const calories = `Калории: ${caloriesData.calories}`;
-  const macro = `Белки: ${caloriesData.protein}, жиры: ${caloriesData.fat}, углеводы: ${caloriesData.carbs}`;
-  const macroRatio = `Соотношение белки/жиры/углеводы: ${caloriesData.macroRatio}`;
-  const tableLabel = 'Необходимое количество еды каждого вида в день:';
+  const tableLabel = 'One week balanced meal plan:';
   const table = createTable(rationData, foodData);
 
-  return `${userData}\n\n${calories}\n${macro}\n${macroRatio}\n\n${tableLabel}\n${table}`;
+  return `${tableLabel}\n${table}`;
 };
 
-export default formatter;
+export default rationFormatter;
