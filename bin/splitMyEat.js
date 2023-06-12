@@ -57,7 +57,8 @@ const getUserPhysicalActivity = () => enquirer.prompt({
 const outputQuestion = () => enquirer.prompt({
   name: 'answer',
   type: 'select',
-  message: 'What information do you want?',
+  prefix: String.fromCharCode(0x2B8A),
+  message: 'What information do you want to see?',
   choices: ['calories', 'meal plan', 'calories and meal plan', 'exit'],
 });
 
