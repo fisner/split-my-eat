@@ -13,7 +13,7 @@ const rationFormatter = (rationData, foodData) => {
   const table = new Table();
 
   const tableHeaders = ['Day', 'Protein food', 'Fat food', 'Carbs food']
-    .map((text) => `${chalk.blue(text)}`);
+    .map((text) => `${chalk.blue.bold(text)}`);
   table.push(tableHeaders);
 
   const proteinList = getFoodList(rationData.proteinFood, 'protein', foodData);

@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import figlet from 'figlet';
 import getRation from '../index.js';
 
-const getLogo = (text) => chalk.cyan(
+const getLogo = (text) => chalk.blue.bold(
   figlet.textSync(text, {
     font: 'Soft',
     horizontalLayout: 'default',
@@ -62,11 +62,11 @@ const outputQuestion = () => enquirer.prompt({
   choices: ['calories', 'meal plan', 'calories and meal plan', 'exit'],
 });
 
-const showUserInfo = (userInfo) => console.log(`${chalk.cyan(userInfo)}\n`);
+const showUserInfo = (userInfo) => console.log(`${chalk.blue(userInfo)}\n`);
 
 const showMessage = (userInfo, message) => {
   showUserInfo(userInfo);
-  console.log(chalk.cyan.bold(message));
+  console.log(chalk.cyan(message));
 };
 
 const output = async (userInfo, userData) => {
