@@ -18,4 +18,4 @@ The user enters his characteristics (gender, age, height, weight) and the progra
 
 ## Work example
 
-[![asciicast](https://asciinema.org/a/591013.svg)](https://asciinema.org/a/591013)
+[![asciicast](https://asciinema.org/a/591090.svg)](https://asciinema.org/a/591090)
