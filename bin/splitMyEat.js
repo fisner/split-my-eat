@@ -4,9 +4,9 @@ import chalk from 'chalk';
 import figlet from 'figlet';
 import getRation from '../index.js';
 
-const getLogo = (text) => chalk.blue.bold(
+const getLogo = (text) => chalk.green.bold(
   figlet.textSync(text, {
-    font: 'Soft',
+    font: 'Roman',
     horizontalLayout: 'default',
     verticalLayout: 'default',
   }),
@@ -62,11 +62,9 @@ const outputQuestion = () => enquirer.prompt({
   choices: ['calories', 'meal plan', 'calories and meal plan', 'exit'],
 });
 
-const showUserInfo = (userInfo) => console.log(`${chalk.blue(userInfo)}\n`);
-
 const showMessage = (userInfo, message) => {
-  showUserInfo(userInfo);
-  console.log(chalk.cyan(message));
+  console.log(`${chalk.green(userInfo)}\n`);
+  console.log(chalk.white.bold(message));
 };
 
 const output = async (userInfo, userData) => {
@@ -92,7 +90,7 @@ const output = async (userInfo, userData) => {
 
 const run = async () => {
   const logo = getLogo('Split my eat');
-  console.log(`${logo}\n`);
+  console.log(logo);
 
   const { gender } = await getUserGender();
   const { age } = await getUserAge();
