@@ -4,12 +4,14 @@ import chalk from 'chalk';
 import figlet from 'figlet';
 import getRation from '../index.js';
 
-const getLogo = (text) => chalk.green.bold(
-  figlet.textSync(text, {
-    font: 'Roman',
-    horizontalLayout: 'default',
-    verticalLayout: 'default',
-  }),
+const showLogo = (text) => console.log(
+  chalk.green.bold(
+    figlet.textSync(text, {
+      font: 'Roman',
+      horizontalLayout: 'default',
+      verticalLayout: 'default',
+    }),
+  ),
 );
 
 const getUserGender = () => enquirer.prompt({
@@ -49,7 +51,7 @@ const getUserPhysicalActivity = () => enquirer.prompt({
     { message: '1-3 light activities per week' },
     { message: '3-5 moderate activities per week' },
     { message: '5-6 moderate activities per week' },
-    { message: '7 vigorous activity per week' },
+    { message: '7 vigorous activities per week' },
   ],
   value: 'no activity',
 });
@@ -89,8 +91,7 @@ const output = async (userInfo, userData) => {
 };
 
 const run = async () => {
-  const logo = getLogo('Split my eat');
-  console.log(logo);
+  showLogo('Split my eat');
 
   const { gender } = await getUserGender();
   const { age } = await getUserAge();
