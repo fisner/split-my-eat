@@ -4,12 +4,13 @@ import calculateRation from './calculateRation.js';
 import caloriesFormatter from './formatters/caloriesFormatter.js';
 import rationFormatter from './formatters/rationFormatter.js';
 
-const getRation = (gender, age, height, weight) => {
-  const caloriesData = calculateCalories(gender, age, height, weight);
+const getRation = (gender, age, height, weight, physicalActivity) => {
+  const caloriesData = calculateCalories(gender, age, height, weight, physicalActivity);
   const foodData = getFoodData();
-  const rationData = calculateRation(caloriesData);
+  const rationData = calculateRation(caloriesData, foodData);
   const formattedCalories = caloriesFormatter(caloriesData);
-  const formattedRation = rationFormatter(rationData, foodData);
+  const formattedRation = rationFormatter(rationData);
+
   return { formattedCalories, formattedRation };
 };
 
