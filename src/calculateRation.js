@@ -1,24 +1,34 @@
-import getFoodData from './utilities/getFoodData.js';
+const getRandomKey = (length) => Math.floor(Math.random() * length);
 
-const getFoodCount = (type, count, foodList) => {
-  const result = Object.keys(getFoodData()[type]).reduce((acc, food) => {
-    acc[food] = Math.round((count * 100) / foodList[food][type]);
-    return acc;
-  }, {});
-  return result;
+const foodCount = (totalMacro, foodMacro, gramsPerFood) => Math.round(
+  (totalMacro / foodMacro) * gramsPerFood,
+);
+
+const getFoodForDay = (calories, macro, foodData) => {
+  const foodList = Object.keys(foodData[macro]);
+  const food = foodList[getRandomKey(foodList.length)];
+  const gramsPerFood = 100;
+  const foodAmount = foodCount(calories[macro], foodData[macro][food][macro], gramsPerFood);
+
+  return { [food]: foodAmount };
 };
 
-const calculateRation = (calories) => {
-  const { protein, fat, carbs } = calories;
-  const proteinFood = getFoodCount('protein', protein, getFoodData().protein);
-  const fatFood = getFoodCount('fat', fat, getFoodData().fat);
-  const carbsFood = getFoodCount('carbs', carbs, getFoodData().carbs);
-  const result = {
-    proteinFood,
-    fatFood,
-    carbsFood,
+const calculateRation = (calories, foodData, count = 0, acc = {}) => {
+  if (count > 6) {
+    return acc;
+  }
+
+  const [proteinFood, fatFood, carbsFood] = ['protein', 'fat', 'carbs']
+    .map((macro) => getFoodForDay(calories, macro, foodData));
+  const dayData = {
+    [count]: {
+      proteinFood,
+      fatFood,
+      carbsFood,
+    },
   };
-  return result;
+
+  return calculateRation(calories, foodData, count + 1, { ...acc, ...dayData });
 };
 
 export default calculateRation;
