@@ -1,5 +1,5 @@
 install:
-	npm i
+	npm ci
 	npm link
 
 uninstall:
