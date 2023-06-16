@@ -13,7 +13,7 @@ const getFoodForDay = (calories, macro, foodData) => {
 };
 
 const calculateRation = (calories, foodData) => {
-  const iter = (days, count, acc = {}) => {
+  const iter = (days, count, acc) => {
     if (count > days) {
       return acc;
     }
