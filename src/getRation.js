@@ -6,8 +6,7 @@ import rationFormatter from './formatters/rationFormatter.js';
 
 const getRation = (gender, age, height, weight, physicalActivity) => {
   const caloriesData = calculateCalories(gender, age, height, weight, physicalActivity);
-  const foodData = getFoodData();
-  const rationData = calculateRation(caloriesData, foodData);
+  const rationData = calculateRation(caloriesData, getFoodData());
   const formattedCalories = caloriesFormatter(caloriesData);
   const formattedRation = rationFormatter(rationData);
 

@@ -12,22 +12,26 @@ const getFoodForDay = (calories, macro, foodData) => {
   return { [food]: foodAmount };
 };
 
-const calculateRation = (calories, foodData, days = 7, count = 1, acc = {}) => {
-  if (count > days) {
-    return acc;
-  }
+const calculateRation = (calories, foodData) => {
+  const iter = (days, count, acc = {}) => {
+    if (count > days) {
+      return acc;
+    }
 
-  const [proteinFood, fatFood, carbsFood] = ['protein', 'fat', 'carbs']
-    .map((macro) => getFoodForDay(calories, macro, foodData));
-  const dayData = {
-    [count - 1]: {
-      proteinFood,
-      fatFood,
-      carbsFood,
-    },
+    const [proteinFood, fatFood, carbsFood] = ['protein', 'fat', 'carbs']
+      .map((macro) => getFoodForDay(calories, macro, foodData));
+    const dayData = {
+      [count - 1]: {
+        proteinFood,
+        fatFood,
+        carbsFood,
+      },
+    };
+
+    return iter(days, count + 1, { ...acc, ...dayData });
   };
 
-  return calculateRation(calories, foodData, days, count + 1, { ...acc, ...dayData });
+  return iter(7, 1, {});
 };
 
 export default calculateRation;
