@@ -1,4 +1,4 @@
-const getFoodsAmount = (protein, fat, carbs, foodsAmount, foodData) => {
+const getFoodAmount = (protein, fat, carbs, foodsAmount, foodData) => {
   const macros = ['protein', 'fat', 'carbs'];
   const gramsPerFood = 100;
   const iter = (macrosRemaind, acc, count) => {
@@ -42,7 +42,7 @@ const getFoodForDay = (calories, foodData) => {
       return foodAmount;
     }
 
-    return iter(...getFoodsAmount(protein, fat, carbs, foodAmount, randomFood));
+    return iter(...getFoodAmount(protein, fat, carbs, foodAmount, randomFood));
   };
 
   const { protein, fat, carbs } = calories;
