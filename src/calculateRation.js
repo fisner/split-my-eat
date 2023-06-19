@@ -1,6 +1,7 @@
 const getFoodAmount = (protein, fat, carbs, foodsAmount, foodData) => {
   const macros = ['protein', 'fat', 'carbs'];
   const gramsPerFood = 100;
+
   const iter = (macrosRemaind, acc, count) => {
     if (count > macros.length - 1) {
       return [...macrosRemaind, acc];
