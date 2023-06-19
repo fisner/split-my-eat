@@ -26,6 +26,13 @@ const getUserAge = () => enquirer.prompt({
   type: 'input',
   message: 'What is your age?',
   initial: 25,
+  validate: (input) => {
+    const age = parseInt(input, 10);
+    if (Number.isNaN(age) || age <= 0 || age > 99) {
+      return 'Please enter a valid age.';
+    }
+    return true;
+  },
 });
 
 const getUserHeight = (gender) => enquirer.prompt({
@@ -33,6 +40,13 @@ const getUserHeight = (gender) => enquirer.prompt({
   type: 'input',
   message: 'What is your height?',
   initial: gender === 'male' ? 175 : 165,
+  validate: (input) => {
+    const height = parseInt(input, 10);
+    if (Number.isNaN(height) || height <= 0 || height > 220) {
+      return 'Please enter a valid height.';
+    }
+    return true;
+  },
 });
 
 const getUserWeight = (height) => enquirer.prompt({
@@ -40,6 +54,13 @@ const getUserWeight = (height) => enquirer.prompt({
   type: 'input',
   message: 'What is your weight?',
   initial: height - 100,
+  validate: (input) => {
+    const weight = parseInt(input, 10);
+    if (Number.isNaN(weight) || weight <= 0 || weight > 220) {
+      return 'Please enter a valid weight.';
+    }
+    return true;
+  },
 });
 
 const getUserPhysicalActivity = () => enquirer.prompt({
