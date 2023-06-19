@@ -74,7 +74,6 @@ const getUserPhysicalActivity = () => enquirer.prompt({
     { message: '5-6 moderate activities per week' },
     { message: '7 vigorous activities per week' },
   ],
-  value: 'no activity',
 });
 
 const outputQuestion = () => enquirer.prompt({

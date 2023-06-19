@@ -1,5 +1,5 @@
 install:
-	npm i
+	npm ci
 	npm link
 
 uninstall:
@@ -13,6 +13,9 @@ lint:
 
 test:
 	npx jest
+
+test-coverage:
+	npx jest --coverage
 
 run:
 	node bin/splitMyEat.js

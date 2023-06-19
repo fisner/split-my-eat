@@ -14,7 +14,7 @@ function calculateMacroRatio(protein, fat, carbs) {
   return `${proteinPercentage.toFixed(1)}% / ${fatPercentage.toFixed(1)}% / ${carbsPercentage.toFixed(1)}%`;
 }
 
-const calculateCalories = (gender, age, height, weight) => {
+const calculateCalories = (gender, age, height, weight, physicalActivity) => {
   const MALE_BMR_CONSTANT_1 = 88.36;
   const MALE_BMR_CONSTANT_2 = 13.4;
   const MALE_BMR_CONSTANT_3 = 4.8;
@@ -23,7 +23,29 @@ const calculateCalories = (gender, age, height, weight) => {
   const FEMALE_BMR_CONSTANT_2 = 9.2;
   const FEMALE_BMR_CONSTANT_3 = 3.1;
   const FEMALE_BMR_CONSTANT_4 = 4.3;
-  const ACTIVITY_MULTIPLIER = 1.2;
+
+  let ACTIVITY_MULTIPLIER;
+
+  switch (physicalActivity) {
+    case 'no activity':
+      ACTIVITY_MULTIPLIER = 1.2;
+      break;
+    case '1-3 light activities per week':
+      ACTIVITY_MULTIPLIER = 1.375;
+      break;
+    case '3-5 moderate activities per week':
+      ACTIVITY_MULTIPLIER = 1.55;
+      break;
+    case '5-6 moderate activities per week':
+      ACTIVITY_MULTIPLIER = 1.725;
+      break;
+    case '7 vigorous activities per week':
+      ACTIVITY_MULTIPLIER = 1.9;
+      break;
+    default:
+      ACTIVITY_MULTIPLIER = 1.2;
+  }
+
   const PROTEIN_MULTIPLIER = 2.2;
   const FAT_MULTIPLIER = 0.2;
 
