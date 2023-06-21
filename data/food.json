@@ -1,14 +1,14 @@
 {
   "protein": {
     "chicken": {
-      "name": "курица",
+      "name": "Chicken",
       "protein": 26.2,
       "fat": 1.1,
       "carbs": 0,
       "calories": 300
     },
     "beef": {
-      "name": "говядина",
+      "name": "Beef",
       "protein": 22.3,
       "fat": 5.1,
       "carbs": 0,
@@ -17,14 +17,14 @@
   },
   "fat": {
     "peanut": {
-      "name": "арахис",
+      "name": "Peanut",
       "protein": 26,
       "fat": 45,
       "carbs": 10.1,
       "calories": 900
     },
     "sunflowerSeed": {
-      "name": "семена подсолнечника",
+      "name": "Sunflower seeds",
       "protein": 16,
       "fat": 43,
       "carbs": 10.1,
@@ -33,14 +33,14 @@
   },
   "carbs": {
     "pasta": {
-      "name": "макароны",
+      "name": "Pasta",
       "protein": 10,
       "fat": 1,
       "carbs": 60,
       "calories": 500
     },
     "rice": {
-      "name": "рис",
+      "name": "Rice",
       "protein": 8.2,
       "fat": 1,
       "carbs": 62,
