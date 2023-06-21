@@ -80,7 +80,7 @@ const formulasData = {
   },
 };
 
-const getMacrosAmount = (calories, macroRatio, caloriesInMacro) => (
+const getMacroAmount = (calories, macroRatio, caloriesInMacro) => (
   Math.round((calories * macroRatio) / 100 / caloriesInMacro)
 );
 
@@ -90,9 +90,9 @@ const calculateMacros = (calories, { proteinRatio, fatRatio, carbsRatio }) => {
   const caloriesInCarbs = 4;
 
   return {
-    protein: getMacrosAmount(calories, proteinRatio, caloriesInProtein),
-    fat: getMacrosAmount(calories, fatRatio, caloriesInFat),
-    carbs: getMacrosAmount(calories, carbsRatio, caloriesInCarbs),
+    protein: getMacroAmount(calories, proteinRatio, caloriesInProtein),
+    fat: getMacroAmount(calories, fatRatio, caloriesInFat),
+    carbs: getMacroAmount(calories, carbsRatio, caloriesInCarbs),
     macroRatio: `${proteinRatio}% ${fatRatio}% ${carbsRatio}%`,
   };
 };
