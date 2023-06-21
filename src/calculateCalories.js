@@ -18,37 +18,64 @@ const activityData = {
   '3-5 moderate activities per week': {
     activityMultiplier: 1.55,
     macroRatio: {
-      proteinRatio: 20,
+      proteinRatio: 30,
       fatRatio: 30,
-      carbsRatio: 50,
+      carbsRatio: 40,
     },
   },
   '5-6 moderate activities per week': {
     activityMultiplier: 1.725,
     macroRatio: {
-      proteinRatio: 20,
-      fatRatio: 30,
+      proteinRatio: 30,
+      fatRatio: 20,
       carbsRatio: 50,
     },
   },
   '7 vigorous activities per week': {
     activityMultiplier: 1.9,
     macroRatio: {
-      proteinRatio: 20,
-      fatRatio: 30,
-      carbsRatio: 50,
+      proteinRatio: 25,
+      fatRatio: 15,
+      carbsRatio: 60,
     },
   },
 };
 
 const formulasData = {
   'Mifflin-St Jeor': {
-    weightCoefficient: 10,
-    heightCoefficient: 6.25,
-    ageCoefficient: 5,
+    weightCoefficient: {
+      male: 10,
+      female: 10,
+    },
+    heightCoefficient: {
+      male: 6.25,
+      female: 6.25,
+    },
+    ageCoefficient: {
+      male: 5,
+      female: 5,
+    },
     genderCoefficient: {
       male: 5,
       female: -161,
+    },
+  },
+  'Harris-Benedict': {
+    weightCoefficient: {
+      male: 13.7,
+      female: 9.6,
+    },
+    heightCoefficient: {
+      male: 5,
+      female: 1.8,
+    },
+    ageCoefficient: {
+      male: 6.76,
+      female: 4.7,
+    },
+    genderCoefficient: {
+      male: 66,
+      female: 655,
     },
   },
 };
@@ -70,11 +97,11 @@ const calculateMacros = (calories, { proteinRatio, fatRatio, carbsRatio }) => {
   };
 };
 
-const calculateCalories = (gender, age, height, weight, physicalActivity, formula = 'Mifflin-St Jeor') => {
+const calculateCalories = (gender, age, height, weight, physicalActivity, formula) => {
   const calories = Math.round((
-    (formulasData[formula].weightCoefficient * weight)
-  + (formulasData[formula].heightCoefficient * height)
-  - (formulasData[formula].ageCoefficient * age)
+    (formulasData[formula].weightCoefficient[gender] * weight)
+  + (formulasData[formula].heightCoefficient[gender] * height)
+  - (formulasData[formula].ageCoefficient[gender] * age)
   + formulasData[formula].genderCoefficient[gender])
   * activityData[physicalActivity].activityMultiplier);
 
