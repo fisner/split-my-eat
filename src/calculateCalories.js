@@ -1,6 +1,6 @@
 const activityData = {
   'no activity': {
-    activityMultiplier: 1.2,
+    multiplier: 1.2,
     macroRatio: {
       proteinRatio: 20,
       fatRatio: 30,
@@ -8,7 +8,7 @@ const activityData = {
     },
   },
   '1-3 light activities per week': {
-    activityMultiplier: 1.375,
+    multiplier: 1.375,
     macroRatio: {
       proteinRatio: 20,
       fatRatio: 30,
@@ -16,7 +16,7 @@ const activityData = {
     },
   },
   '3-5 moderate activities per week': {
-    activityMultiplier: 1.55,
+    multiplier: 1.55,
     macroRatio: {
       proteinRatio: 30,
       fatRatio: 30,
@@ -24,7 +24,7 @@ const activityData = {
     },
   },
   '5-6 moderate activities per week': {
-    activityMultiplier: 1.725,
+    multiplier: 1.725,
     macroRatio: {
       proteinRatio: 30,
       fatRatio: 20,
@@ -32,7 +32,7 @@ const activityData = {
     },
   },
   '7 vigorous activities per week': {
-    activityMultiplier: 1.9,
+    multiplier: 1.9,
     macroRatio: {
       proteinRatio: 25,
       fatRatio: 15,
@@ -81,7 +81,7 @@ const formulasData = {
 };
 
 const getMacroAmount = (calories, macroRatio, caloriesInMacro) => (
-  Math.round((calories * macroRatio) / 100 / caloriesInMacro)
+  Math.round((calories * (macroRatio / 100)) / caloriesInMacro)
 );
 
 const calculateMacros = (calories, { proteinRatio, fatRatio, carbsRatio }) => {
@@ -103,7 +103,7 @@ const calculateCalories = (gender, age, height, weight, physicalActivity, formul
   + (formulasData[formula].heightCoefficient[gender] * height)
   - (formulasData[formula].ageCoefficient[gender] * age)
   + formulasData[formula].genderCoefficient[gender])
-  * activityData[physicalActivity].activityMultiplier);
+  * activityData[physicalActivity].multiplier);
 
   const {
     protein, fat, carbs, macroRatio,
