@@ -120,7 +120,7 @@ const run = async () => {
   const { physicalActivity } = await getUserPhysicalActivity();
   const { formula } = await getUCaloriesFormula();
 
-  const userInfo = `Gender: ${gender}, age: ${age}, height: ${height}, weight: ${weight}\nPhysical activity: ${physicalActivity}`;
+  const userInfo = `Gender: ${gender}, age: ${age}, height: ${height}, weight: ${weight}\nPhysical activity: ${physicalActivity}\nCalories count formula: ${formula}`;
   const userData = getRation(gender, age, height, weight, physicalActivity, formula);
   output(userInfo, userData);
 };
