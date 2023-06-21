@@ -7,11 +7,12 @@ const getFoodAmount = (protein, fat, carbs, foodsAmount, foodData) => {
       return [...macrosRemaind, acc];
     }
 
-    const foodName = Object.keys(foodData)[count];
-    const foodWeight = macrosRemaind[count] / 2 / foodData[foodName][macros[count]];
+    const food = Object.keys(foodData)[count];
+    const foodName = foodData[food].name;
+    const foodWeight = macrosRemaind[count] / 2 / foodData[food][macros[count]];
 
     const newMacrosRemaind = macrosRemaind.map((macro, index) => {
-      const foodMacro = foodData[foodName][macros[index]] * foodWeight;
+      const foodMacro = foodData[food][macros[index]] * foodWeight;
       return macro - foodMacro;
     });
 

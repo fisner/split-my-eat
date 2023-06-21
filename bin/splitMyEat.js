@@ -67,6 +67,16 @@ const getUserPhysicalActivity = () => enquirer.prompt({
   ],
 });
 
+const getUCaloriesFormula = () => enquirer.prompt({
+  name: 'formula',
+  type: 'select',
+  message: 'What calories formula use?',
+  choices: [
+    { message: 'Mifflin-St Jeor' },
+    { message: 'Harris-Benedict' },
+  ],
+});
+
 const outputQuestion = () => enquirer.prompt({
   name: 'answer',
   type: 'select',
@@ -110,9 +120,10 @@ const run = async () => {
   const { height } = await getUserHeight(gender);
   const { weight } = await getUserWeight(height);
   const { physicalActivity } = await getUserPhysicalActivity();
+  const { formula } = await getUCaloriesFormula();
 
-  const userInfo = `Gender: ${gender}, age: ${age}, height: ${height}, weight: ${weight}\nPhysical activity: ${physicalActivity}`;
-  const userData = getRation(gender, age, height, weight, physicalActivity);
+  const userInfo = `Gender: ${gender}, age: ${age}, height: ${height}, weight: ${weight}\nPhysical activity: ${physicalActivity}\nCalories count formula: ${formula}`;
+  const userData = getRation(gender, age, height, weight, physicalActivity, formula);
   output(userInfo, userData);
 };
 

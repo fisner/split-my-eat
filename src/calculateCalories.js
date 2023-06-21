@@ -1,69 +1,113 @@
-const checkGender = (gender) => {
-  const MALE_VARIANTS = ['male', 'm', 'man', 'boy'];
-  return MALE_VARIANTS.includes(gender.toLowerCase());
+const activityData = {
+  'no activity': {
+    multiplier: 1.2,
+    macroRatio: {
+      proteinRatio: 20,
+      fatRatio: 30,
+      carbsRatio: 50,
+    },
+  },
+  '1-3 light activities per week': {
+    multiplier: 1.375,
+    macroRatio: {
+      proteinRatio: 20,
+      fatRatio: 30,
+      carbsRatio: 50,
+    },
+  },
+  '3-5 moderate activities per week': {
+    multiplier: 1.55,
+    macroRatio: {
+      proteinRatio: 30,
+      fatRatio: 30,
+      carbsRatio: 40,
+    },
+  },
+  '5-6 moderate activities per week': {
+    multiplier: 1.725,
+    macroRatio: {
+      proteinRatio: 30,
+      fatRatio: 20,
+      carbsRatio: 50,
+    },
+  },
+  '7 vigorous activities per week': {
+    multiplier: 1.9,
+    macroRatio: {
+      proteinRatio: 25,
+      fatRatio: 15,
+      carbsRatio: 60,
+    },
+  },
 };
 
-function calculateMacroRatio(protein, fat, carbs) {
-  const proteinCalories = protein * 4;
-  const fatCalories = fat * 9;
-  const carbsCalories = carbs * 4;
-  const totalCalories = proteinCalories + fatCalories + carbsCalories;
-  const proteinPercentage = (proteinCalories / totalCalories) * 100;
-  const fatPercentage = (fatCalories / totalCalories) * 100;
-  const carbsPercentage = (carbsCalories / totalCalories) * 100;
-  return `${proteinPercentage.toFixed(1)}% / ${fatPercentage.toFixed(1)}% / ${carbsPercentage.toFixed(1)}%`;
-}
+const formulasData = {
+  'Mifflin-St Jeor': {
+    weightCoefficient: {
+      male: 10,
+      female: 10,
+    },
+    heightCoefficient: {
+      male: 6.25,
+      female: 6.25,
+    },
+    ageCoefficient: {
+      male: 5,
+      female: 5,
+    },
+    genderCoefficient: {
+      male: 5,
+      female: -161,
+    },
+  },
+  'Harris-Benedict': {
+    weightCoefficient: {
+      male: 13.7,
+      female: 9.6,
+    },
+    heightCoefficient: {
+      male: 5,
+      female: 1.8,
+    },
+    ageCoefficient: {
+      male: 6.76,
+      female: 4.7,
+    },
+    genderCoefficient: {
+      male: 66,
+      female: 655,
+    },
+  },
+};
 
-const calculateCalories = (gender, age, height, weight, physicalActivity) => {
-  const MALE_BMR_CONSTANT_1 = 88.36;
-  const MALE_BMR_CONSTANT_2 = 13.4;
-  const MALE_BMR_CONSTANT_3 = 4.8;
-  const MALE_BMR_CONSTANT_4 = 5.7;
-  const FEMALE_BMR_CONSTANT_1 = 447.6;
-  const FEMALE_BMR_CONSTANT_2 = 9.2;
-  const FEMALE_BMR_CONSTANT_3 = 3.1;
-  const FEMALE_BMR_CONSTANT_4 = 4.3;
+const getMacroAmount = (calories, macroRatio, caloriesInMacro) => (
+  Math.round((calories * (macroRatio / 100)) / caloriesInMacro)
+);
 
-  let ACTIVITY_MULTIPLIER;
+const calculateMacros = (calories, { proteinRatio, fatRatio, carbsRatio }) => {
+  const caloriesInProtein = 4;
+  const caloriesInFat = 9;
+  const caloriesInCarbs = 4;
 
-  switch (physicalActivity) {
-    case 'no activity':
-      ACTIVITY_MULTIPLIER = 1.2;
-      break;
-    case '1-3 light activities per week':
-      ACTIVITY_MULTIPLIER = 1.375;
-      break;
-    case '3-5 moderate activities per week':
-      ACTIVITY_MULTIPLIER = 1.55;
-      break;
-    case '5-6 moderate activities per week':
-      ACTIVITY_MULTIPLIER = 1.725;
-      break;
-    case '7 vigorous activities per week':
-      ACTIVITY_MULTIPLIER = 1.9;
-      break;
-    default:
-      ACTIVITY_MULTIPLIER = 1.2;
-  }
+  return {
+    protein: getMacroAmount(calories, proteinRatio, caloriesInProtein),
+    fat: getMacroAmount(calories, fatRatio, caloriesInFat),
+    carbs: getMacroAmount(calories, carbsRatio, caloriesInCarbs),
+    macroRatio: `${proteinRatio}% ${fatRatio}% ${carbsRatio}%`,
+  };
+};
 
-  const PROTEIN_MULTIPLIER = 2.2;
-  const FAT_MULTIPLIER = 0.2;
+const calculateCalories = (gender, age, height, weight, physicalActivity, formula) => {
+  const calories = Math.round((
+    (formulasData[formula].weightCoefficient[gender] * weight)
+  + (formulasData[formula].heightCoefficient[gender] * height)
+  - (formulasData[formula].ageCoefficient[gender] * age)
+  + formulasData[formula].genderCoefficient[gender])
+  * activityData[physicalActivity].multiplier);
 
-  const isMale = checkGender(gender);
-
-  const bmr = isMale
-    ? MALE_BMR_CONSTANT_1 + (MALE_BMR_CONSTANT_2 * weight)
-     + (MALE_BMR_CONSTANT_3 * height) - (MALE_BMR_CONSTANT_4 * age)
-    : FEMALE_BMR_CONSTANT_1 + (FEMALE_BMR_CONSTANT_2 * weight)
-     + (FEMALE_BMR_CONSTANT_3 * height) - (FEMALE_BMR_CONSTANT_4 * age);
-
-  const calories = Math.round(bmr * ACTIVITY_MULTIPLIER);
-  const protein = Math.round(weight * PROTEIN_MULTIPLIER);
-  const fat = Math.round((calories * FAT_MULTIPLIER) / 9);
-  const carbs = Math.round((calories - (protein * 4) - (fat * 9)) / 4);
-
-  const macroRatio = calculateMacroRatio(protein, fat, carbs);
-  const totalMacroRatio = calculateMacroRatio(protein, fat, carbs + protein * 4 + fat * 9);
+  const {
+    protein, fat, carbs, macroRatio,
+  } = calculateMacros(calories, activityData[physicalActivity].macroRatio);
 
   return {
     calories,
@@ -71,7 +115,6 @@ const calculateCalories = (gender, age, height, weight, physicalActivity) => {
     fat,
     carbs,
     macroRatio,
-    totalMacroRatio,
   };
 };
 
