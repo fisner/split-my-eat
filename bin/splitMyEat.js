@@ -3,6 +3,7 @@ import enquirer from 'enquirer';
 import chalk from 'chalk';
 import figlet from 'figlet';
 import getRation from '../index.js';
+import getFood from '../src/utilities/food.js';
 
 const showLogo = (text) => console.log(
   chalk.green.bold(
@@ -101,6 +102,7 @@ const output = async (userInfo, userData) => {
 };
 
 const run = async () => {
+  getFood();
   showLogo('Split my eat');
 
   const { gender } = await getUserGender();
