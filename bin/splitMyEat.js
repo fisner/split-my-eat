@@ -17,7 +17,7 @@ const showLogo = (text) => console.log(
 
 const validator = (input, type, min, max) => {
   const value = parseInt(input, 10);
-  if (Number.isNaN(value) || value <= min || value > max) {
+  if (Number.isNaN(value) || value < min || value > max) {
     return `Please enter a valid ${type}, min. ${type} ${min}, max. ${type} ${max}`;
   }
   return true;
@@ -43,7 +43,7 @@ const getUserHeight = (gender) => enquirer.prompt({
   type: 'input',
   message: 'What is your height?',
   initial: gender === 'male' ? 175 : 165,
-  validate: (input) => validator(input, 'height', 70, 230),
+  validate: (input) => validator(input, 'height', 140, 230),
 });
 
 const getUserWeight = (height) => enquirer.prompt({
@@ -51,7 +51,7 @@ const getUserWeight = (height) => enquirer.prompt({
   type: 'input',
   message: 'What is your weight?',
   initial: height - 100 > 0 ? height - 100 : 50,
-  validate: (input) => validator(input, 'weight', 30, 250),
+  validate: (input) => validator(input, 'weight', 35, 160),
 });
 
 const getUserPhysicalActivity = () => enquirer.prompt({
@@ -111,7 +111,7 @@ const output = async (userInfo, userData) => {
   }
 };
 
-const run = async (updateData = false) => {
+const run = async (updateData = true) => {
   if (updateData) {
     await updateFoodData();
   }
