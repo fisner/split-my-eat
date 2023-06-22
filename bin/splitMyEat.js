@@ -2,6 +2,7 @@
 import enquirer from 'enquirer';
 import chalk from 'chalk';
 import figlet from 'figlet';
+import updateFoodData from '../src/utilities/updateFoodData.js';
 import getRation from '../index.js';
 
 const showLogo = (text) => console.log(
@@ -106,11 +107,15 @@ const output = async (userInfo, userData) => {
       break;
     case 'exit':
     default:
-      break;
+      process.exit(0);
   }
 };
 
-const run = async () => {
+const run = async (updateData = false) => {
+  if (updateData) {
+    await updateFoodData();
+  }
+
   showLogo('Split my eat');
 
   const { gender } = await getUserGender();

@@ -7,9 +7,12 @@ const getFoodAmount = (protein, fat, carbs, foodsAmount, foodData) => {
       return [...macrosRemaind, acc];
     }
 
+    if (macrosRemaind < 1) {
+      return iter(macrosRemaind, acc, count + 1);
+    }
     const food = Object.keys(foodData)[count];
     const foodName = foodData[food].name;
-    const foodWeight = macrosRemaind[count] / 2 / foodData[food][macros[count]];
+    const foodWeight = macrosRemaind[count] / 10 / foodData[food][macros[count]];
 
     const newMacrosRemaind = macrosRemaind.map((macro, index) => {
       const foodMacro = foodData[food][macros[index]] * foodWeight;
@@ -28,7 +31,7 @@ const getFoodAmount = (protein, fat, carbs, foodsAmount, foodData) => {
 
 const getRandomKey = (length) => Math.floor(Math.random() * length);
 
-const checkRemaind = (macro, calculationError = 0.000005) => (
+const checkRemaind = (macro, calculationError = 1) => (
   macro < calculationError && macro > -calculationError
 );
 

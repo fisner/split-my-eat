@@ -1,1 +1,50 @@
-{"protein":{"Veal":{"name":"Телятина","protein":19.9,"fat":1.1,"carbs":0,"calories":91},"Chicken":{"name":"Куриное филе","protein":23,"fat":1,"carbs":0,"calories":113},"Beef":{"name":"Говядина ","protein":36,"fat":10,"carbs":0,"calories":310},"Tuna":{"name":"Тунец","protein":30,"fat":1,"carbs":0,"calories":116},"red fish":{"name":"Красная рыба","protein":22,"fat":13,"carbs":0,"calories":206},"shrimps":{"name":"Креветки","protein":24,"fat":1,"carbs":0,"calories":100},"Horsemeat":{"name":"Конина","protein":20.3,"fat":7.1,"carbs":0,"calories":149}},"fat":{"olive oil":{"name":"Оливковое масло ","protein":0,"fat":100,"carbs":0,"calories":884},"cheese":{"name":"Сыр","protein":25,"fat":33,"carbs":1.3,"calories":403},"milk":{"name":"Молоко (3,2% жирности) ","protein":3.3,"fat":3.2,"carbs":4.7,"calories":61},"butter":{"name":"Масло сливочное ","protein":0.6,"fat":82.5,"carbs":0.8,"calories":748},"avocado":{"name":"Авокадо ","protein":2,"fat":14.7,"carbs":8.5,"calories":160},"hazelnut":{"name":"Миндаль ","protein":21.1,"fat":49.9,"carbs":21.6,"calories":575}},"carbs":{"rice":{"name":"Рис ","protein":2.7,"fat":0.3,"carbs":23,"calories":111},"buckwheat":{"name":"Гречка ","protein":12,"fat":2,"carbs":62,"calories":313},"Wheat bread":{"name":"Хлеб пшеничный ","protein":8,"fat":1,"carbs":49,"calories":265},"Potato":{"name":"Картофель ","protein":2,"fat":0.1,"carbs":17,"calories":77},"Oatmeal":{"name":"Овсянка ","protein":13,"fat":6,"carbs":60,"calories":389},"Whole grain bread":{"name":"Хлеб цельнозерновой ","protein":12,"fat":2,"carbs":45,"calories":247}}}
+{
+  "protein": {
+    "chicken": {
+      "name": "Chicken",
+      "protein": 26.2,
+      "fat": 1.1,
+      "carbs": 0,
+      "calories": 300
+    },
+    "beef": {
+      "name": "Beef",
+      "protein": 22.3,
+      "fat": 5.1,
+      "carbs": 0,
+      "calories": 350
+    }
+  },
+  "fat": {
+    "peanut": {
+      "name": "Peanut",
+      "protein": 26,
+      "fat": 45,
+      "carbs": 10.1,
+      "calories": 900
+    },
+    "sunflowerSeed": {
+      "name": "Sunflower seeds",
+      "protein": 16,
+      "fat": 43,
+      "carbs": 10.1,
+      "calories": 700
+    }
+  },
+  "carbs": {
+    "pasta": {
+      "name": "Pasta",
+      "protein": 10,
+      "fat": 1,
+      "carbs": 60,
+      "calories": 500
+    },
+    "rice": {
+      "name": "Rice",
+      "protein": 8.2,
+      "fat": 1,
+      "carbs": 62,
+      "calories": 510
+    }
+  }
+}
