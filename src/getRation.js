@@ -1,4 +1,4 @@
-import getFoodData from './utilities/getFoodData.js';
+import getFoodData from './utilities/getFoodDataFromJson.js';
 import calculateCalories from './calculateCalories.js';
 import calculateRation from './calculateRation.js';
 import caloriesFormatter from './formatters/caloriesFormatter.js';
