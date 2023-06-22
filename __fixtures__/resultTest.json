@@ -1,0 +1,37 @@
+{
+    "0": {
+        "proteinFood": { "Chicken": 101 },
+        "fatFood": { "Peanut": 141 },
+        "carbsFood": { "Pasta": 407 }
+    },
+    "1": {
+        "proteinFood": { "Chicken": 101 },
+        "fatFood": { "Peanut": 141 },
+        "carbsFood": { "Pasta": 407 }
+    },
+    "2": {
+        "proteinFood": { "Chicken": 101 },
+        "fatFood": { "Peanut": 141 },
+        "carbsFood": { "Pasta": 407 }
+    },
+    "3": {
+        "proteinFood": { "Chicken": 101 },
+        "fatFood": { "Peanut": 141 },
+        "carbsFood": { "Pasta": 407 }
+    },
+    "4": {
+        "proteinFood": { "Chicken": 101 },
+        "fatFood": { "Peanut": 141 },
+        "carbsFood": { "Pasta": 407 }
+    },
+    "5": {
+        "proteinFood": { "Chicken": 101 },
+        "fatFood": { "Peanut": 141 },
+        "carbsFood": { "Pasta": 407 }
+    },
+    "6": {
+        "proteinFood": { "Chicken": 101 },
+        "fatFood": { "Peanut": 141 },
+        "carbsFood": { "Pasta": 407 }
+    }
+  }
