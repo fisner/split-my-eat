@@ -1,50 +1,176 @@
 {
   "protein": {
-    "chicken": {
-      "name": "Chicken",
-      "protein": 26.2,
-      "fat": 1.1,
-      "carbs": 0,
-      "calories": 300
-    },
-    "beef": {
+    "Beef": {
       "name": "Beef",
-      "protein": 22.3,
-      "fat": 5.1,
-      "carbs": 0,
-      "calories": 350
+      "protein": "20.1",
+      "fat": "3.5",
+      "carbs": "0"
+    },
+    "Veal": {
+      "name": "Veal",
+      "protein": "20.5",
+      "fat": "2.4",
+      "carbs": "0"
+    },
+    "Rabbit": {
+      "name": "Rabbit",
+      "protein": "20.6",
+      "fat": "12.8",
+      "carbs": "0"
+    },
+    "Chicken": {
+      "name": "Chicken",
+      "protein": "21.5",
+      "fat": "1.3",
+      "carbs": "0"
+    },
+    "Turkey": {
+      "name": "Turkey",
+      "protein": "19.2",
+      "fat": "0.7",
+      "carbs": "0"
+    },
+    "Pink salmon": {
+      "name": "Pink salmon",
+      "protein": "20.5",
+      "fat": "6.5",
+      "carbs": "0"
+    },
+    "Salmon": {
+      "name": "Salmon",
+      "protein": "19.9",
+      "fat": "13.6",
+      "carbs": "0"
+    },
+    "Pollock": {
+      "name": "Pollock",
+      "protein": "15.9",
+      "fat": "0.9",
+      "carbs": "0"
+    },
+    "Keta": {
+      "name": "Keta",
+      "protein": "22.1",
+      "fat": "5.6",
+      "carbs": "0"
+    },
+    "Flounder": {
+      "name": "Flounder",
+      "protein": "16.5",
+      "fat": "1.8",
+      "carbs": "0"
     }
   },
   "fat": {
-    "peanut": {
+    "Peanut": {
       "name": "Peanut",
-      "protein": 26,
-      "fat": 45,
-      "carbs": 10.1,
-      "calories": 900
+      "protein": "26.2",
+      "fat": "45.3",
+      "carbs": "9.8"
     },
-    "sunflowerSeed": {
-      "name": "Sunflower seeds",
-      "protein": 16,
-      "fat": 43,
-      "carbs": 10.1,
-      "calories": 700
+    "Sunflower seed": {
+      "name": "Sunflower seed",
+      "protein": "20.7",
+      "fat": "52.9",
+      "carbs": "4"
+    },
+    "Walnut": {
+      "name": "Walnut",
+      "protein": "13.8",
+      "fat": "61.3",
+      "carbs": "10.2"
+    },
+    "Cashew": {
+      "name": "Cashew",
+      "protein": "25.8",
+      "fat": "54.3",
+      "carbs": "13.2"
+    },
+    "Almond": {
+      "name": "Almond",
+      "protein": "18.3",
+      "fat": "57.9",
+      "carbs": "16.2"
+    },
+    "Hazelnut": {
+      "name": "Hazelnut",
+      "protein": "16.3",
+      "fat": "66.7",
+      "carbs": "9.8"
+    },
+    "Pistachios": {
+      "name": "Pistachios",
+      "protein": "20",
+      "fat": "50",
+      "carbs": "7"
+    },
+    "Sesame": {
+      "name": "Sesame",
+      "protein": "19.4",
+      "fat": "48.7",
+      "carbs": "12.2"
+    },
+    "Pine nut": {
+      "name": "Pine nut",
+      "protein": "21",
+      "fat": "63.9",
+      "carbs": "15.1"
     }
   },
   "carbs": {
-    "pasta": {
-      "name": "Pasta",
-      "protein": 10,
-      "fat": 1,
-      "carbs": 60,
-      "calories": 500
+    "Oat groats": {
+      "name": "Oat groats",
+      "protein": "11.9",
+      "fat": "5.8",
+      "carbs": "65.4"
     },
-    "rice": {
-      "name": "Rice",
-      "protein": 8.2,
-      "fat": 1,
-      "carbs": 62,
-      "calories": 510
+    "Corn grits": {
+      "name": "Corn grits",
+      "protein": "8.3",
+      "fat": "1.2",
+      "carbs": "75"
+    },
+    "Barley grits": {
+      "name": "Barley grits",
+      "protein": "10.4",
+      "fat": "1.3",
+      "carbs": "71.7"
+    },
+    "Pearl barley": {
+      "name": "Pearl barley",
+      "protein": "9.3",
+      "fat": "1.1",
+      "carbs": "73.7"
+    },
+    "Semolina": {
+      "name": "Semolina",
+      "protein": "11.3",
+      "fat": "0.7",
+      "carbs": "73.3"
+    },
+    "Buckwheat": {
+      "name": "Buckwheat",
+      "protein": "12.6",
+      "fat": "2.6",
+      "carbs": "68"
+    },
+    "Wheat groats": {
+      "name": "Wheat groats",
+      "protein": "12",
+      "fat": "2.9",
+      "carbs": "69.3"
+    },
+    "White rice": {
+      "name": "White rice",
+      "protein": "7.5",
+      "fat": "1.1",
+      "carbs": "79"
+    },
+    "Pasta": {
+      "name": "Pasta",
+      "protein": "11.5",
+      "fat": "2.9",
+      "carbs": "67"
     }
   }
 }
