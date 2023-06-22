@@ -1,5 +1,3 @@
-import getFoodData from './utilities/getFoodData.js';
-
 const getFoodAmount = (macrosRemaind, foodData, foodIndex) => {
   const coefficient = {
     protein: 1.7,
@@ -50,8 +48,7 @@ const getFoodForDay = (calories, foodData) => {
 
 const roundFoodAmount = (food) => ({ [Object.keys(food)]: Math.round(Object.values(food)) });
 
-const calculateRation = (calories) => {
-  const foodData = getFoodData();
+const calculateRation = (calories, foodData) => {
   const iter = (days, day, acc = {}) => {
     if (day > days) {
       return acc;
