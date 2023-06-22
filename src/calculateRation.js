@@ -1,63 +1,57 @@
-const getFoodAmount = (protein, fat, carbs, foodsAmount, foodData) => {
+import getFoodData from './utilities/getFoodData.js';
+
+const getFoodAmount = (macrosRemaind, foodData, foodIndex) => {
+  const coefficient = {
+    protein: 1.7,
+    fat: 1.8,
+    carbs: 1,
+  };
+
   const macros = ['protein', 'fat', 'carbs'];
   const gramsPerFood = 100;
 
-  const iter = (macrosRemaind, acc, count) => {
-    if (count > macros.length - 1) {
-      return [...macrosRemaind, acc];
-    }
+  const food = Object.keys(foodData)[foodIndex];
+  const foodName = foodData[food].name;
+  const foodWeight = Math.abs(macrosRemaind[foodIndex]
+    / coefficient[macros[foodIndex]]
+    / foodData[food][macros[foodIndex]]);
 
-    if (macrosRemaind < 1) {
-      return iter(macrosRemaind, acc, count + 1);
-    }
-    const food = Object.keys(foodData)[count];
-    const foodName = foodData[food].name;
-    const foodWeight = macrosRemaind[count] / 10 / foodData[food][macros[count]];
+  const newMacrosRemaind = macrosRemaind.map((macro, index) => {
+    const foodMacro = foodData[food][macros[index]] * foodWeight;
+    return macro - foodMacro;
+  });
 
-    const newMacrosRemaind = macrosRemaind.map((macro, index) => {
-      const foodMacro = foodData[food][macros[index]] * foodWeight;
-      return macro - foodMacro;
-    });
+  const foodAmount = foodWeight * gramsPerFood;
 
-    const currentFoodType = `${macros[count]}Food`;
-    const foodAmount = (acc?.[currentFoodType]?.[foodName] ?? 0) + foodWeight * gramsPerFood;
-    const newAcc = { ...acc, [currentFoodType]: { [foodName]: foodAmount } };
-
-    return iter(newMacrosRemaind, newAcc, count + 1);
-  };
-
-  return iter([protein, fat, carbs], foodsAmount, 0);
+  return [newMacrosRemaind, { [`${macros[foodIndex]}Food`]: { [foodName]: foodAmount } }];
 };
 
 const getRandomKey = (length) => Math.floor(Math.random() * length);
 
-const checkRemaind = (macro, calculationError = 1) => (
-  macro < calculationError && macro > -calculationError
-);
-
 const getFoodForDay = (calories, foodData) => {
-  const randomFood = ['protein', 'fat', 'carbs'].reduce((acc, macro) => {
+  const macros = ['protein', 'fat', 'carbs'];
+  const randomFood = macros.reduce((acc, macro) => {
     const foodList = Object.keys(foodData[macro]);
     const food = foodList[getRandomKey(foodList.length)];
     return { ...acc, [food]: foodData[macro][food] };
   }, {});
 
-  const iter = (protein, fat, carbs, foodAmount = {}) => {
-    if (checkRemaind(protein) && checkRemaind(fat) && checkRemaind(carbs)) {
+  const iter = (protein, fat, carbs, foodAmount, count) => {
+    if (count >= macros.length) {
       return foodAmount;
     }
-
-    return iter(...getFoodAmount(protein, fat, carbs, foodAmount, randomFood));
+    const [macrosRemaind, data] = getFoodAmount([protein, fat, carbs], randomFood, count);
+    return iter(...macrosRemaind, { ...foodAmount, ...data }, count + 1);
   };
 
   const { protein, fat, carbs } = calories;
-
-  return iter(protein, fat, carbs);
+  return iter(protein, fat, carbs, {}, 0);
 };
 
 const roundFoodAmount = (food) => ({ [Object.keys(food)]: Math.round(Object.values(food)) });
 
-const calculateRation = (calories, foodData) => {
+const calculateRation = (calories) => {
+  const foodData = getFoodData();
   const iter = (days, day, acc = {}) => {
     if (day > days) {
       return acc;
