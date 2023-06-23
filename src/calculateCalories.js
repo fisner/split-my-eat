@@ -2,9 +2,9 @@ const activityData = {
   'no activity': {
     multiplier: 1.2,
     macroRatio: {
-      proteinRatio: 20,
+      proteinRatio: 15,
       fatRatio: 30,
-      carbsRatio: 50,
+      carbsRatio: 55,
     },
   },
   '1-3 light activities per week': {
@@ -34,9 +34,9 @@ const activityData = {
   '7 vigorous activities per week': {
     multiplier: 1.9,
     macroRatio: {
-      proteinRatio: 25,
-      fatRatio: 15,
-      carbsRatio: 60,
+      proteinRatio: 30,
+      fatRatio: 20,
+      carbsRatio: 50,
     },
   },
 };

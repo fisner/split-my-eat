@@ -1,6 +1,6 @@
 {
   "name": "split-my-eat",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "51 group project",
   "type": "module",
   "main": "index.js",
