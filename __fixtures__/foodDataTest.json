@@ -1,0 +1,29 @@
+{
+    "protein": {
+      "chicken": {
+        "name": "Chicken",
+        "protein": 26.2,
+        "fat": 1.1,
+        "carbs": 0,
+        "calories": 300
+      }
+    },
+    "fat": {
+      "peanut": {
+        "name": "Peanut",
+        "protein": 26,
+        "fat": 45,
+        "carbs": 10.1,
+        "calories": 900
+      }
+    },
+    "carbs": {
+      "pasta": {
+        "name": "Pasta",
+        "protein": 10,
+        "fat": 1,
+        "carbs": 60,
+        "calories": 500
+      }
+    }
+  }
