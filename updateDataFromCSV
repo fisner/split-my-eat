@@ -1,0 +1,22 @@
+fisner@mail.ru: const m = 'Говядина 18.7 12.6 0 \n Орехи 1 2 3 \n Вишня 3 4 5';
+const convertStr = (string) => {
+  console.log(string);
+  const separator = '\n';
+  const newArr = string.split(separator);
+  console.log(newArr);
+  let result = ''; 
+  for (i = 0; i < newArr.length; i += 1) {
+  var object = {};
+   for (j = 0; j < 4; j += 1) {
+if (newArr[i][j] !== Number) {
+  console.log(newArr[i][j]);
+  object = {name: newArr[i][j], protein: newArr[i][j + 1], fat: newArr[i][j + 2]};
+  let myJson = JSON.stringify(object);  
+  }
+continue;
+}
+result += myJson;
+}
+return result;
+}
+console.log(convertStr(m));
